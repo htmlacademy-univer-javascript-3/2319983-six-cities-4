@@ -1,53 +1,53 @@
 export const Places = [
     
     {
-        premium: true,
-        image: "img/apartment-01.jpg",
+        isPremium: true,
+        previewImage: "img/apartment-01.jpg",
         price: 120,
-        active: false,
-        rating: 80,
-        name: "Beautiful &amp; luxurious apartment at great location",
+        isFavorite: false,
+        rating: 4,
+        title: "Beautiful &amp; luxurious apartment at great location",
         type: "Apartment",
 
     },
 
     {
-        premium: false,
-        image: "img/room.jpg",
+        isPremium: false,
+        previewImage: "img/room.jpg",
         price: 80,
-        active: true,
-        rating: 80,
-        name: "Wood and stone place",
+        isFavorite: true,
+        rating: 4,
+        title: "Wood and stone place",
         type: "Room"
     },
 
     {
-        premium: false,
-        image: "img/apartment-02.jpg",
+        isPremium: false,
+        previewImage: "img/apartment-02.jpg",
         price: 132,
-        active: false,
-        rating: 80,
-        name: "Canal View Prinsengracht",
+        isFavorite: false,
+        rating: 4,
+        title: "Canal View Prinsengracht",
         type: "Apartment"
     },
 
     {
-        premium: true,
-        image: "img/apartment-03.jpg",
+        isPremium: true,
+        previewImage: "img/apartment-03.jpg",
         price: 180,
-        active: false,
-        rating: 100,
-        name: "Nice, cozy, warm big bed apartment",
+        isFavorite: false,
+        rating: 4,
+        title: "Nice, cozy, warm big bed apartment",
         type: "Apartment"
     },
 
     {
-        premium: false,
-        image: "img/room.jpg",
+        isPremium: false,
+        previewImage: "img/room.jpg",
         price: 80,
-        active: true,
-        rating: 80,
-        name: "Wood and stone place",
+        isFavorite: true,
+        rating: 4,
+        title: "Wood and stone place",
         type: "Room"
     },
     
