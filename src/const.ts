@@ -1,6 +1,23 @@
 export const Places = [
     
     {
+        id: "6af6f711-c28d-4121-82cd-e0b462a27f00",
+
+        city: {
+            name: "Amsterdam",
+            location: {
+            latitude: 52.35514938496378,
+            longitude: 4.673877537499948,
+            zoom: 8
+            }
+        },
+
+        location: {
+            latitude: 52.35514938496378,
+            longitude: 4.673877537499948,
+            zoom: 8
+        },
+
         isPremium: true,
         previewImage: "img/apartment-01.jpg",
         price: 120,
@@ -11,7 +28,23 @@ export const Places = [
 
     },
 
-    {
+    {   id: "6af6f711-c28d-4121-82cd-e0b462a27f00",
+
+        city: {
+            name: "Amsterdam",
+            location: {
+            latitude: 52.35514938496378,
+            longitude: 4.673877537499948,
+            zoom: 8
+            }
+        },
+
+        location: {
+            latitude: 52.35514938496378,
+            longitude: 4.673877537499948,
+            zoom: 8
+        },
+
         isPremium: false,
         previewImage: "img/room.jpg",
         price: 80,
@@ -22,6 +55,23 @@ export const Places = [
     },
 
     {
+        id: "6af6f711-c28d-4121-82cd-e0b462a27f00",
+
+        city: {
+            name: "Amsterdam",
+            location: {
+            latitude: 52.35514938496378,
+            longitude: 4.673877537499948,
+            zoom: 8
+            }
+        },
+
+        location: {
+            latitude: 52.35514938496378,
+            longitude: 4.673877537499948,
+            zoom: 8
+        },
+
         isPremium: false,
         previewImage: "img/apartment-02.jpg",
         price: 132,
@@ -32,16 +82,50 @@ export const Places = [
     },
 
     {
+        id: "6af6f711-c28d-4121-82cd-e0b462a27f00",
+
+        city: {
+            name: "Amsterdam",
+            location: {
+            latitude: 52.35514938496378,
+            longitude: 4.673877537499948,
+            zoom: 8
+            }
+        },
+
+        location: {
+            latitude: 52.35514938496378,
+            longitude: 4.673877537499948,
+            zoom: 8
+        },
+
         isPremium: true,
         previewImage: "img/apartment-03.jpg",
         price: 180,
         isFavorite: false,
-        rating: 4,
+        rating: 5,
         title: "Nice, cozy, warm big bed apartment",
         type: "Apartment"
     },
 
     {
+        id: "6af6f711-c28d-4121-82cd-e0b462a27f00",
+
+        city: {
+            name: "Amsterdam",
+            location: {
+            latitude: 52.35514938496378,
+            longitude: 4.673877537499948,
+            zoom: 8
+            }
+        },
+
+        location: {
+            latitude: 52.35514938496378,
+            longitude: 4.673877537499948,
+            zoom: 8
+        },
+
         isPremium: false,
         previewImage: "img/room.jpg",
         price: 80,

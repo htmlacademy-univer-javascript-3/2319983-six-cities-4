@@ -1,9 +1,9 @@
 import PlaceCard from "../place-card/place-card";
-import { Props } from "../place-card/place-card";
+import { OffersProps } from "../../../types/list-offers";
 
 
 export type ListProps = {
-    places: Props[]
+    places: OffersProps[]
 
 }
 

@@ -1,28 +1,7 @@
- export type Props = {
-  id: string
-  title: string
-  type: string
-  price: number
-  city: {
-  name: "Amsterdam",
-  location: {
-  latitude: 52.35514938496378,
-  longitude: 4.673877537499948,
-  zoom: 8
-  }}
-  location: {
-  latitude: 52.35514938496378,
-  longitude: 4.673877537499948,
-  zoom: 8
-  }
-  isFavorite: boolean
-  isPremium: boolean
-  rating: number
-  previewImage: string
-  }
+import { OffersProps } from "../../../types/list-offers";
 
 type CardProps = {
-  place: Props
+  place: OffersProps
 
 }
 
