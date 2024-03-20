@@ -1,13 +1,13 @@
-import Header from "../../components/common/header/header";
-import ListPlaces from "../../components/main/list-places/list-places";
-import ListLocation from "../../components/main/list-location/list-location";
-import { ListProps } from "../../components/main/list-places/list-places";
+import Header from '../../components/common/header/header';
+import ListPlaces from '../../components/main/list-places/list-places';
+import ListLocation from '../../components/main/list-location/list-location';
+import { ListProps } from '../../components/main/list-places/list-places';
 
 
 function Main({places}: ListProps): JSX.Element {
-    return (
+  return (
     <div className="page page--gray page--main">
-      
+
       <Header/>
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
@@ -41,7 +41,7 @@ function Main({places}: ListProps): JSX.Element {
         </div>
       </main>
     </div>
-    );
+  );
 }
 
 export default Main;

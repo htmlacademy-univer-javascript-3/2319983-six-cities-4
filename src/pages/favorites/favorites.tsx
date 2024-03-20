@@ -1,7 +1,7 @@
-import Header from "../../components/common/header/header";
+import Header from '../../components/common/header/header';
 
 function Favorite():JSX.Element {
-    return (
+  return (
     <div className="page">
       <Header/>
 
@@ -43,7 +43,7 @@ function Favorite():JSX.Element {
                       </div>
                       <div className="place-card__rating rating">
                         <div className="place-card__stars rating__stars">
-                          <span style={{width: "100%"}}></span>
+                          <span style={{width: '100%'}}></span>
                           <span className="visually-hidden">Rating</span>
                         </div>
                       </div>
@@ -75,7 +75,7 @@ function Favorite():JSX.Element {
                       </div>
                       <div className="place-card__rating rating">
                         <div className="place-card__stars rating__stars">
-                          <span style={{width: "80%"}}></span>
+                          <span style={{width: '80%'}}></span>
                           <span className="visually-hidden">Rating</span>
                         </div>
                       </div>
@@ -118,7 +118,7 @@ function Favorite():JSX.Element {
                       </div>
                       <div className="place-card__rating rating">
                         <div className="place-card__stars rating__stars">
-                          <span style={{width: "100%"}}></span>
+                          <span style={{width: '100%'}}></span>
                           <span className="visually-hidden">Rating</span>
                         </div>
                       </div>
@@ -140,7 +140,7 @@ function Favorite():JSX.Element {
         </a>
       </footer>
     </div>
-    );
+  );
 }
 
 export default Favorite;
