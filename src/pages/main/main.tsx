@@ -33,7 +33,7 @@ function Main({places}: ListProps): JSX.Element {
                   <li className="places__option" tabIndex={0}>Top rated first</li>
                 </ul>
               </form>
-              <ListPlaces places = {places}/>
+              <ListPlaces places = {places} type='near-places'/>
             </section>
             <div className="cities__right-section">
               <Map places={places}/>
