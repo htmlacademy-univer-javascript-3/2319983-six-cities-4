@@ -3,13 +3,14 @@ import Main from '../../pages/main/main';
 import { ListProps } from '../main/list-places/list-places';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import Login from '../../pages/login/login';
-import Favorite from '../../pages/favorites/favorites';
+import Favorites from '../../pages/favorites/favorites';
 import Offer from '../../pages/offer/offer';
 import NotFound from '../../pages/not-found/not-found';
 import PrivateRoute from '../common/private-route/private-route';
 
 
 function App({places}: ListProps): JSX.Element {
+  const favoriteplaces = places.filter((place) => place.isFavorite);
   return(
     <BrowserRouter>
       <Routes>
@@ -27,7 +28,7 @@ function App({places}: ListProps): JSX.Element {
             <PrivateRoute
               authorizationStatus={AuthorizationStatus.NoAuth}
             >
-              <Favorite/>
+              <Favorites places = {favoriteplaces}/>
             </PrivateRoute>
           }
         />
