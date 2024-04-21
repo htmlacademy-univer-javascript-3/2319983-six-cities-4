@@ -1,4 +1,4 @@
-export type OffersProps = {
+export type OfferProps = {
     id: string;
     title: string;
     type: string;
@@ -21,3 +21,7 @@ export type OffersProps = {
     rating: number;
     previewImage: string;
     }
+
+export type OffersProps = OfferProps[];
+
+

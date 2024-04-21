@@ -1,6 +1,7 @@
 import { LocationPlaces } from '../../../const';
 
 function ListLocation():JSX.Element {
+
   return (
     <div className="tabs">
       <section className="locations container">
