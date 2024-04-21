@@ -7,6 +7,7 @@ import Favorites from '../../pages/favorites/favorites';
 import Offer from '../../pages/offer/offer';
 import NotFound from '../../pages/not-found/not-found';
 import PrivateRoute from '../common/private-route/private-route';
+import { comments } from '../../mocks/comments';
 
 
 function App({places}: ListProps): JSX.Element {
@@ -34,7 +35,7 @@ function App({places}: ListProps): JSX.Element {
         />
         <Route
           path= {AppRoute.Offer}
-          element = {<Offer/>}
+          element = {<Offer review={comments}/>}
         />
         <Route
           path="*"
