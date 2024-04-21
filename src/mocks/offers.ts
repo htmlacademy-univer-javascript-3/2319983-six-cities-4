@@ -4,20 +4,20 @@ import { OffersProps } from '../types/list-offers';
 export const places: OffersProps = [
 
   {
-    id: '6af6f711-c28d-4121-82cd-e0b462a27f00',
+    id: '1',
 
     city: {
       name: 'Amsterdam',
       location: {
-        latitude: 52.35514938496378,
-        longitude: 4.673877537499948,
-        zoom: 8
+        latitude: 52.37454,
+        longitude: 4.897976,
+        zoom: 12
       }
     },
 
     location: {
-      latitude: 52.35514938496378,
-      longitude: 4.673877537499948,
+      latitude: 52.3909553943508,
+      longitude: 4.85309666406198,
       zoom: 8
     },
 
@@ -31,20 +31,20 @@ export const places: OffersProps = [
 
   },
 
-  { id: '6af6f711-c28d-4121-82cd-e0b462a27f00',
+  { id: '2',
 
     city: {
       name: 'Amsterdam',
       location: {
-        latitude: 52.35514938496378,
-        longitude: 4.673877537499948,
-        zoom: 8
+        latitude: 52.37454,
+        longitude: 4.897976,
+        zoom: 12
       }
     },
 
     location: {
-      latitude: 52.35514938496378,
-      longitude: 4.673877537499948,
+      latitude: 52.3609553943508,
+      longitude: 4.85309666406198,
       zoom: 8
     },
 
@@ -58,20 +58,20 @@ export const places: OffersProps = [
   },
 
   {
-    id: '6af6f711-c28d-4121-82cd-e0b462a27f00',
+    id: '3',
 
     city: {
       name: 'Amsterdam',
       location: {
-        latitude: 52.35514938496378,
-        longitude: 4.673877537499948,
-        zoom: 8
+        latitude: 52.37454,
+        longitude: 4.897976,
+        zoom: 12
       }
     },
 
     location: {
-      latitude: 52.35514938496378,
-      longitude: 4.673877537499948,
+      latitude: 52.3909553943508,
+      longitude: 4.929309666406198,
       zoom: 8
     },
 
@@ -85,20 +85,20 @@ export const places: OffersProps = [
   },
 
   {
-    id: '6af6f711-c28d-4121-82cd-e0b462a27f00',
+    id: '4',
 
     city: {
       name: 'Amsterdam',
       location: {
-        latitude: 52.35514938496378,
-        longitude: 4.673877537499948,
-        zoom: 8
+        latitude: 52.37454,
+        longitude: 4.897976,
+        zoom: 12
       }
     },
 
     location: {
-      latitude: 52.35514938496378,
-      longitude: 4.673877537499948,
+      latitude: 52.3809553943508,
+      longitude: 4.939309666406198,
       zoom: 8
     },
 
@@ -111,31 +111,5 @@ export const places: OffersProps = [
     type: 'Apartment'
   },
 
-  {
-    id: '6af6f711-c28d-4121-82cd-e0b462a27f00',
-
-    city: {
-      name: 'Amsterdam',
-      location: {
-        latitude: 52.35514938496378,
-        longitude: 4.673877537499948,
-        zoom: 8
-      }
-    },
-
-    location: {
-      latitude: 52.35514938496378,
-      longitude: 4.673877537499948,
-      zoom: 8
-    },
-
-    isPremium: false,
-    previewImage: 'img/room.jpg',
-    price: 80,
-    isFavorite: true,
-    rating: 4,
-    title: 'Wood and stone place',
-    type: 'Room'
-  },
 
 ];

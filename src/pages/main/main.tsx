@@ -2,6 +2,7 @@ import Header from '../../components/common/header/header';
 import ListPlaces from '../../components/main/list-places/list-places';
 import ListLocation from '../../components/main/list-location/list-location';
 import { ListProps } from '../../components/main/list-places/list-places';
+import Map from '../../components/main/map/map';
 
 
 function Main({places}: ListProps): JSX.Element {
@@ -35,7 +36,7 @@ function Main({places}: ListProps): JSX.Element {
               <ListPlaces places = {places}/>
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              <Map places={places}/>
             </div>
           </div>
         </div>
