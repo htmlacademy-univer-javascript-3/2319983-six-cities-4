@@ -1,6 +1,3 @@
-export const LocationPlaces = [{name:'Paris', active: false}, {name:'Cologne', active: false}, {name:'Brussels', active: false}, {name:'Amsterdam', active: true}, {name:'Hamburg', active: false}, {name:'Dusseldorf', active: false}];
-
-
 export enum AppRoute {
     Main = '/',
     Login = '/login',
@@ -13,4 +10,13 @@ export enum AuthorizationStatus {
     NoAuth = 'NO_AUTH',
     Unknown = 'UNKNOWN',
 
+}
+
+export enum NameCity {
+    Paris = 'Paris',
+    Cologne = 'Cologne',
+    Brussels = 'Brussels',
+    Amsterdam = 'Amsterdam',
+    Hamburg = 'Hamburg',
+    Dusseldorf = 'Dusseldorf',
 }

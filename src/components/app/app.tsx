@@ -17,7 +17,7 @@ function App({places}: ListProps): JSX.Element {
       <Routes>
         <Route
           path = {AppRoute.Main}
-          element = {<Main places={places} type={'cities'}/>}
+          element = {<Main />}
         />
         <Route
           path= {AppRoute.Login}
