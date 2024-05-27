@@ -5,17 +5,19 @@ import { OfferProps } from '../../../types/list-offers';
 type CardProps = {
   place: OfferProps;
   type: string;
-  onCardHover: (id: string | null) => void;
+  handleCardMouseEnter?: (id: OfferProps['id']) => void;
+  handleCardMouseLeave?: () => void;
 };
 
-function PlaceCard({place,onCardHover, type}:CardProps):JSX.Element {
-  const handleOnMouseEnter = () => onCardHover(place.id);
-  const handleOnMouseLeave = () => onCardHover(null);
+function PlaceCard({place,handleCardMouseLeave: handleMouseLeave, handleCardMouseEnter: handleMouseEnter, type}:CardProps):JSX.Element {
+
 
   return(
     <article
-      onMouseEnter = {handleOnMouseEnter}
-      onMouseLeave = {handleOnMouseLeave}
+
+
+      onMouseEnter={() => handleMouseEnter?.(place.id)}
+      onMouseLeave={() => handleMouseLeave?.()}
 
       className={`${type}__card place-card`}
     >

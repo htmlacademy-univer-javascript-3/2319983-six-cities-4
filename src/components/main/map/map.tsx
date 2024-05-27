@@ -1,32 +1,57 @@
 import {useRef, useEffect} from 'react';
-import leaflet from 'leaflet';
+import { Marker, layerGroup } from 'leaflet';
+import { Icon } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import useMap from './use-map';
-import { OffersProps } from '../../../types/list-offers';
+import { OffersProps,OfferProps } from '../../../types/list-offers';
 
+
+const pin = new Icon({
+  iconUrl: 'img/pin.svg',
+  iconSize: [27, 39],
+  iconAnchor: [20, 39]
+});
+
+const activePin = new Icon({
+  iconUrl: 'img/pin-active.svg',
+  iconSize: [27, 39],
+  iconAnchor: [20, 39]
+});
 
 type MapProps = {
+    selectOffer?: OfferProps['id'];
     places: OffersProps;
 
   }
-function Map({places}: MapProps) {
+function Map({places, selectOffer: selectedOfferId}: MapProps) {
   const mapRef = useRef(null);
   const city = places[0].city.location;
   const map = useMap({mapRef, city});
 
   useEffect(() => {
     if (map) {
+      const layer = layerGroup().addTo(map);
       places.forEach((place) => {
-        leaflet
-          .marker({
-            lat: place.location.latitude,
-            lng: place.location.longitude,
-          },
-          )
-          .addTo(map);
+        const marker = new Marker({
+          lat: place.location.latitude,
+          lng: place.location.longitude,
+        });
+        marker.setIcon(
+          selectedOfferId !== undefined && place.id === selectedOfferId
+            ? activePin
+            : pin
+
+        )
+          .addTo(layer);
       });
     }
-  }, [map, places]);
+  }, [map, places,selectedOfferId]);
+
+  useEffect(() => {
+    if (map) {
+      map.flyTo([city.latitude, city.longitude]);
+    }
+  }, [city, map]);
 
 
   return <section className="cities__map map" ref={mapRef}/>;
