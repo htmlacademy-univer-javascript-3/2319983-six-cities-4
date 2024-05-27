@@ -1,24 +1,39 @@
 import PlaceCard from '../place-card/place-card';
 import { OffersProps } from '../../../types/list-offers';
-import { useState } from 'react';
+import { NameSort } from '../../../const';
+import { OfferProps } from '../../../types/list-offers';
+import { useAppSelector } from '../../../hooks/redux';
 
 
 export type ListProps = {
     places: OffersProps;
     type: 'cities' | 'near-places';
+    handleCardMouseEnter?: (id: OfferProps['id']) => void;
+    handleCardMouseLeave?: () => void;
 
 }
 
-function ListPlaces({places,type}: ListProps):JSX.Element {
+const SortType: Record<NameSort, (firstOffer: OfferProps, secondOffer: OfferProps) => number> = {
+  [NameSort.Popular]: () => 0,
+  [NameSort.LowToHigh]: (first, second) => first.price - second.price,
+  [NameSort.HighToLow]: (first, second) => second.price - first.price,
+  [NameSort.TopRated]: (first, second) => second.rating - first.rating
+};
 
-  const [, setCardHover] = useState<string|null> (null);
-  const handCardHover = (id: string | null) => setCardHover(id);
+function ListPlaces({places,handleCardMouseEnter,
+  handleCardMouseLeave,type}: ListProps):JSX.Element {
+
+
+  const selectedSoftType = useAppSelector((state) => state.selectSort);
+  const sortPlaces = [...places].sort(SortType[selectedSoftType]);
 
   return(
     <div className="cities__places-list places__list tabs__content">
       {
-        places.map((place) =>(
-          <PlaceCard key = {place.id} place = {place} type={type} onCardHover = {handCardHover}/>
+        sortPlaces.map((place) =>(
+          <PlaceCard key = {place.id} place = {place} type={type} handleCardMouseEnter={handleCardMouseEnter}
+            handleCardMouseLeave={handleCardMouseLeave}
+          />
         ))
       }
     </div>

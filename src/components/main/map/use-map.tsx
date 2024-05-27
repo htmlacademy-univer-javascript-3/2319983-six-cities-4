@@ -1,6 +1,6 @@
 import {useEffect, useState, useRef} from 'react';
 import leaflet, {Map} from 'leaflet';
-import { Location } from '../../../types/location';
+import { Location } from '../../../types/list-offers';
 
 type useMapProps = {
     mapRef : React.MutableRefObject<HTMLElement | null>;
