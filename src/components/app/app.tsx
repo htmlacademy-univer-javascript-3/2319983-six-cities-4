@@ -8,9 +8,19 @@ import Offer from '../../pages/offer/offer';
 import NotFound from '../../pages/not-found/not-found';
 import PrivateRoute from '../common/private-route/private-route';
 import { comments } from '../../mocks/comments';
+import { useAppSelector } from '../../hooks/redux';
+import Spinner from '../common/spinner/spinner';
 
 
 function App({places}: ListProps): JSX.Element {
+
+  const isLoad = useAppSelector((state) => state.isLoad);
+
+  if (isLoad) {
+    return (
+      <Spinner />
+    );
+  }
   const favoriteplaces = places.filter((place) => place.isFavorite);
   return(
     <BrowserRouter>
