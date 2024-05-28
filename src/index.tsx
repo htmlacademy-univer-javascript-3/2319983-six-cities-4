@@ -4,6 +4,9 @@ import App from './components/app/app';
 import { places } from './mocks/offers';
 import { store } from './store';
 import { Provider } from 'react-redux';
+import { fetch as fetchPlace } from './store/api-action';
+
+store.dispatch(fetchPlace());
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
