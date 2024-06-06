@@ -1,8 +1,8 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { NameCity,NameSort as NameSort } from '../const';
+import { NameCity,NameSort,AuthorizationStatus } from '../const';
 import { places } from '../mocks/offers';
 import { OfferProps } from '../types/list-offers';
-import { changeCity, changeSort } from './action';
+import { changeCity, changeSort, requireAuth } from './action';
 import { loadPlaces as loadPlaces } from './action';
 import { setStatus as setPlacesStatus } from './action';
 
@@ -12,14 +12,18 @@ type State = {
     places: OfferProps[];
     selectSort: NameSort;
     isLoad: boolean;
+    authStat: AuthorizationStatus;
 }
 const installState: State = {
   selectCity: NameCity.Amsterdam,
   places,
   selectSort: NameSort.Popular,
-  isLoad: false
+  isLoad: false,
+  authStat: AuthorizationStatus.Unknown,
+
 
 };
+
 
 export const reducer = createReducer(installState, (builder) => {
   builder
@@ -34,5 +38,8 @@ export const reducer = createReducer(installState, (builder) => {
     })
     .addCase(setPlacesStatus, (state, action) => {
       state.isLoad = action.payload;
+    })
+    .addCase(requireAuth, (state,action) => {
+      state.authStat = action.payload;
     });
 });

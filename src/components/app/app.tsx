@@ -1,7 +1,5 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Main from '../../pages/main/main';
-import { ListProps } from '../main/list-places/list-places';
-import { AppRoute, AuthorizationStatus } from '../../const';
 import Login from '../../pages/login/login';
 import Favorites from '../../pages/favorites/favorites';
 import Offer from '../../pages/offer/offer';
@@ -10,34 +8,52 @@ import PrivateRoute from '../common/private-route/private-route';
 import { comments } from '../../mocks/comments';
 import { useAppSelector } from '../../hooks/redux';
 import Spinner from '../common/spinner/spinner';
+import HistoryRouter from './history-router';
+import { history } from '../../store';
+import { Navigate } from 'react-router-dom';
+import { AppRoute, AuthorizationStatus } from '../../const.ts';
 
+type RedirectRouteProps = {
+  children: JSX.Element;
+  authStatus: AuthorizationStatus;
+}
 
-function App({places}: ListProps): JSX.Element {
+function App(): JSX.Element {
 
+  const places = useAppSelector((state) => state.places);
   const isLoad = useAppSelector((state) => state.isLoad);
+  const AuthStatus = useAppSelector((state) => state.authStat);
+
+  const RedirectRoute = ({ children, authStatus }: RedirectRouteProps): JSX.Element => authStatus === AuthorizationStatus.Auth ? <Navigate to={AppRoute.Main}/> : children;
 
   if (isLoad) {
     return (
       <Spinner />
     );
   }
+
   const favoriteplaces = places.filter((place) => place.isFavorite);
   return(
-    <BrowserRouter>
+    <HistoryRouter history={history}>
       <Routes>
         <Route
+          index
           path = {AppRoute.Main}
           element = {<Main />}
         />
         <Route
           path= {AppRoute.Login}
-          element = {<Login/>}
+          element = {
+            <RedirectRoute authStatus={AuthStatus}>
+              <Login/>
+            </RedirectRoute>
+          }
         />
         <Route
           path= {AppRoute.Favorite}
           element = {
             <PrivateRoute
-              authorizationStatus={AuthorizationStatus.NoAuth}
+              authorizationStatus={AuthStatus}
             >
               <Favorites places = {favoriteplaces}/>
             </PrivateRoute>
@@ -52,9 +68,13 @@ function App({places}: ListProps): JSX.Element {
           element={<NotFound />}
         />
       </Routes>
-    </BrowserRouter>
+    </HistoryRouter>
+
 
   );
 }
 
+
 export default App;
+
+
