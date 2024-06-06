@@ -1,22 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/app/app';
-import { places } from './mocks/offers';
 import { store } from './store';
 import { Provider } from 'react-redux';
-import { fetch as fetchPlace } from './store/api-action';
+import { fetch, checkAuth} from './store/api-action';
+import { ToastContainer } from 'react-toastify';
 
-store.dispatch(fetchPlace());
+
+store.dispatch(checkAuth());
+store.dispatch(fetch());
+
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
+
 root.render(
   <React.StrictMode>
     <Provider store = {store}>
-      <App places={places} type={'cities'}/>
+      <ToastContainer/>
+      <App/>
     </Provider>
+
 
   </React.StrictMode>
 );

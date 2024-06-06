@@ -1,8 +1,12 @@
 import Logo from '../logo/logo';
-import { LogoProp } from '../logo/logo';
+import Navigation from './navigation';
 
 
-function Header({isActive}:LogoProp):JSX.Element {
+type HeaderProps = {
+  isActive?: boolean;
+  nav?:boolean;
+}
+function Header({isActive = true, nav = true}:HeaderProps):JSX.Element {
   return(
     <header className="header">
       <div className="container">
@@ -10,23 +14,7 @@ function Header({isActive}:LogoProp):JSX.Element {
           <div className="header__left">
             <Logo isActive = {isActive}/>
           </div>
-          <nav className="header__nav">
-            <ul className="header__nav-list">
-              <li className="header__nav-item user">
-                <a className="header__nav-link header__nav-link--profile" href="#">
-                  <div className="header__avatar-wrapper user__avatar-wrapper">
-                  </div>
-                  <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
-                  <span className="header__favorite-count">3</span>
-                </a>
-              </li>
-              <li className="header__nav-item">
-                <a className="header__nav-link" href="#">
-                  <span className="header__signout">Sign out</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
+          {nav && <Navigation />}
         </div>
       </div>
     </header>

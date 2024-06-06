@@ -54,7 +54,9 @@ function Map({places, selectOffer: selectedOfferId}: MapProps) {
   }, [city, map]);
 
 
-  return <section className="cities__map map" ref={mapRef}/>;
+  return (
+    <div ref={mapRef} style={{height: '100%'}}></div>
+  );
 }
 
 export default Map;
