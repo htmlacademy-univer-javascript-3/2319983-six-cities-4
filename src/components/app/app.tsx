@@ -19,7 +19,6 @@ type RedirectRouteProps = {
 
 function App(): JSX.Element {
 
-  const places = useAppSelector((state) => state.places);
   const isLoad = useAppSelector((state) => state.isLoad);
   const AuthStatus = useAppSelector((state) => state.authStat);
 
@@ -31,7 +30,6 @@ function App(): JSX.Element {
     );
   }
 
-  const favoriteplaces = places.filter((place) => place.isFavorite);
   return(
     <HistoryRouter history={history}>
       <Routes>
@@ -54,7 +52,7 @@ function App(): JSX.Element {
             <PrivateRoute
               authorizationStatus={AuthStatus}
             >
-              <Favorites places = {favoriteplaces}/>
+              <Favorites/>
             </PrivateRoute>
           }
         />

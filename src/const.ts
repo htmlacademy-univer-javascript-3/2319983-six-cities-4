@@ -34,6 +34,8 @@ export enum APIRoute {
     Logout = '/logout',
     Review = '/comments',
     Nearby = '/nearby',
+    Favorite = '/favorite',
+
 
   }
 
@@ -44,3 +46,4 @@ export const Rating: Record<string, number> = {
   'good': 4,
   'perfect': 5,
 };
+

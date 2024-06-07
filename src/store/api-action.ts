@@ -10,6 +10,7 @@ import { AppRoute } from '../const.ts';
 import { Comments } from '../types/comment.ts';
 import { APIRoute } from '../const.ts';
 import { OfferAllInfo } from '../types/list-offers.ts';
+import { OfferProps } from '../types/list-offers.ts';
 
 export type UserProps = {
   name: string;
@@ -128,3 +129,41 @@ export const postReviewAction = createAsyncThunk<void, ReviewData, AsyncThunkCon
     dispatch(fetchReviewsAction(offerId));
   },
 );
+
+export const fetchFavoritesAction = createAsyncThunk<OffersProps[], undefined, AsyncThunkConfig>(
+  'fetchFavorites',
+  async (_arg, { extra: api}) => {
+    const {data} = await api.get<OffersProps[]>(APIRoute.Favorite);
+    return data;
+  },
+);
+
+export const fetchFavorites = createAsyncThunk<OfferProps[], void, { extra: AxiosInstance; state: State }>(
+  'favorites/fetchFavorites',
+  async (_, { extra: api, getState }) => {
+    const state = getState();
+    const token = state.userInfo?.token;
+
+    if (!token) {
+      throw new Error('No authentication token found');
+    }
+
+    const response = await api.get('/favorite', {
+      headers: {
+        'X-Token': token,
+      },
+    });
+
+    return response.data;
+  }
+);
+
+export const toggleFavorite = createAsyncThunk<OfferAllInfo, { offerId: string; status: number }, { extra: AxiosInstance; state: State }>(
+  'changeFavoriteStatus',
+  async ({status, offerId}, { extra: api}) => {
+    const { data } = await api.post<OfferAllInfo>(`${APIRoute.Favorite}/${offerId}/${status}`);
+    return data;
+  },
+);
+
+
