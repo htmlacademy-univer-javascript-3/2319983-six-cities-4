@@ -1,7 +1,8 @@
 import { createAction } from '@reduxjs/toolkit';
 import { AppRoute, NameCity, NameSort } from '../const';
-import { OffersProps } from '../types/list-offers';
 import { AuthorizationStatus } from '../const';
+import { Comments } from '../types/comment';
+import { OffersProps,OfferAllInfo } from '../types/list-offers';
 
 
 export const changeCity = createAction<NameCity>('setCity');
@@ -15,5 +16,17 @@ export const setStatus = createAction<boolean>('setStatus');
 export const requireAuth = createAction<AuthorizationStatus>('requireAuth');
 
 export const redirect = createAction<AppRoute>('redirect');
+
+export const isOfferLoad = createAction<boolean>('isOfferLoading');
+
+export const setOffer = createAction<OfferAllInfo>('setOffer');
+
+export const isReviewsLoad = createAction<boolean>('isReviewsLoad');
+
+export const setReviews = createAction<Comments>('setReviews');
+
+export const isNearbyLoad = createAction<boolean>('isNearbyLoad');
+
+export const setNearby = createAction<OffersProps>('setNearby');
 
 

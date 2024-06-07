@@ -3,6 +3,7 @@ export enum AppRoute {
     Login = '/login',
     Favorite = '/favorite',
     Offer = '/offer/:id',
+    PageNotFound = '*'
 }
 
 export enum AuthorizationStatus {
@@ -26,3 +27,20 @@ export enum NameSort {
     HighToLow = 'Price: high to low',
     TopRated = 'Top rated first',
   }
+
+export enum APIRoute {
+    Offers = '/offers',
+    Login = '/login',
+    Logout = '/logout',
+    Review = '/comments',
+    Nearby = '/nearby',
+
+  }
+
+export const Rating: Record<string, number> = {
+  'terribly': 1,
+  'badly': 2,
+  'not bad': 3,
+  'good': 4,
+  'perfect': 5,
+};

@@ -1,10 +1,12 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { NameCity,NameSort,AuthorizationStatus } from '../const';
+import { NameCity,NameSort,AuthorizationStatus, } from '../const';
 import { places } from '../mocks/offers';
 import { OfferProps } from '../types/list-offers';
-import { changeCity, changeSort, requireAuth } from './action';
-import { loadPlaces as loadPlaces } from './action';
-import { setStatus as setPlacesStatus } from './action';
+import { changeCity, changeSort, requireAuth,isOfferLoad,setOffer,isReviewsLoad,setReviews,setNearby,isNearbyLoad} from './action';
+import { loadPlaces } from './action';
+import { setStatus } from './action';
+import { OfferAllInfo } from '../types/list-offers';
+import { Comments } from '../types/comment';
 
 
 type State = {
@@ -13,6 +15,12 @@ type State = {
     selectSort: NameSort;
     isLoad: boolean;
     authStat: AuthorizationStatus;
+    isOfferLoading: boolean;
+    offer: OfferAllInfo | null;
+    isReviewsLoad: boolean;
+    comments: Comments;
+    isNearbyLoad: boolean;
+    nearby: OfferProps[];
 }
 const installState: State = {
   selectCity: NameCity.Amsterdam,
@@ -20,8 +28,12 @@ const installState: State = {
   selectSort: NameSort.Popular,
   isLoad: false,
   authStat: AuthorizationStatus.Unknown,
-
-
+  isOfferLoading: false,
+  offer: null,
+  isReviewsLoad: false,
+  comments: [],
+  isNearbyLoad: false,
+  nearby: [],
 };
 
 
@@ -36,10 +48,29 @@ export const reducer = createReducer(installState, (builder) => {
     .addCase(loadPlaces, (state, action) => {
       state.places = action.payload;
     })
-    .addCase(setPlacesStatus, (state, action) => {
+    .addCase(setStatus, (state, action) => {
       state.isLoad = action.payload;
     })
     .addCase(requireAuth, (state,action) => {
       state.authStat = action.payload;
+    })
+    .addCase(isOfferLoad, (state, action) => {
+      state.isOfferLoading = action.payload;
+    })
+    .addCase(setOffer, (state, action) => {
+      state.offer = action.payload;
+    })
+    .addCase(isReviewsLoad, (state, action) => {
+      state.isReviewsLoad = action.payload;
+    })
+    .addCase(setReviews, (state, action) => {
+      state.comments = action.payload;
+    })
+    .addCase(isNearbyLoad, (state, action) => {
+      state.isNearbyLoad = action.payload;
+    })
+    .addCase(setNearby, (state, action) => {
+      state.nearby = action.payload;
     });
+
 });
