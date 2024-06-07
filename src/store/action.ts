@@ -3,6 +3,7 @@ import { AppRoute, NameCity, NameSort } from '../const';
 import { AuthorizationStatus } from '../const';
 import { Comments } from '../types/comment';
 import { OffersProps,OfferAllInfo } from '../types/list-offers';
+import { UserProps } from './api-action';
 
 
 export const changeCity = createAction<NameCity>('setCity');
@@ -28,5 +29,7 @@ export const setReviews = createAction<Comments>('setReviews');
 export const isNearbyLoad = createAction<boolean>('isNearbyLoad');
 
 export const setNearby = createAction<OffersProps>('setNearby');
+
+export const setUserInfo = createAction<UserProps | null>('setUserInfo');
 
 

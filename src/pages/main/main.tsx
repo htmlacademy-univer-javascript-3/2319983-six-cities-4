@@ -7,15 +7,17 @@ import { useAppSelector } from '../../hooks/redux';
 import cn from 'classnames';
 import { useState } from 'react';
 import { OfferProps } from '../../types/list-offers';
+import { useMemo } from 'react';
+import { useCallback } from 'react';
 
 function Main(): JSX.Element {
   const changeCity = useAppSelector((store) => store.places);
   const [selectOffer, setSelectOffer] = useState<OfferProps['id']>('');
   const places = useAppSelector((store) => store.selectCity);
-  const placesbyCity = changeCity.filter((offer) => offer.city.name === places.toString());
+  const placesbyCity = useMemo(() =>changeCity.filter((offer) => offer.city.name === places.toString()),[changeCity, places]);
 
-  const handleCardMouseEnter = (id: OfferProps['id']) => setSelectOffer(id);
-  const handleCardMouseLeave = () => setSelectOffer('');
+  const handleCardMouseEnter = useCallback((id: OfferProps['id']) => setSelectOffer(id),[]);
+  const handleCardMouseLeave = useCallback(() => setSelectOffer(''),[]);
   return (
     <div className="page page--gray page--main">
 
