@@ -12,7 +12,9 @@ import { APIRoute } from '../const.ts';
 import { OfferAllInfo } from '../types/list-offers.ts';
 
 export type UserProps = {
-  id: number;
+  name: string;
+  avatarUrl: string;
+  isPro: boolean;
   email: string;
   token: string;
 };
