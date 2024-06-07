@@ -9,6 +9,7 @@ import { useState } from 'react';
 import { OfferProps } from '../../types/list-offers';
 import { useMemo } from 'react';
 import { useCallback } from 'react';
+import MainEmpty from './main-empty';
 
 function Main(): JSX.Element {
   const changeCity = useAppSelector((store) => store.places);
@@ -26,26 +27,28 @@ function Main(): JSX.Element {
         <h1 className="visually-hidden">Cities</h1>
         <ListLocation/>
         <div className="cities">
-          <div className="cities__places-container container">
-            <section className="cities__places places">
-              <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{placesbyCity.length} places to stay in {placesbyCity[0]?.city?.name}</b>
-              <Sorting/>
-              <ListPlaces places = {placesbyCity} handleCardMouseLeave={handleCardMouseLeave}
-                handleCardMouseEnter={handleCardMouseEnter} type="cities"
-              />
-            </section>
-            <div className="cities__right-section">
-              {Boolean(places.length) && (
-                <section className="cities__map map">
-                  <Map
-                    places={placesbyCity}
-                    selectOffer={selectOffer}
-                  />
-                </section>
-              )}
-            </div>
-          </div>
+          {placesbyCity && placesbyCity?.length > 0 ?
+            <div className="cities__places-container container">
+              <section className="cities__places places">
+                <h2 className="visually-hidden">Places</h2>
+                <b className="places__found">{placesbyCity.length} places to stay in {placesbyCity[0]?.city?.name}</b>
+                <Sorting/>
+                <ListPlaces places = {placesbyCity} handleCardMouseLeave={handleCardMouseLeave}
+                  handleCardMouseEnter={handleCardMouseEnter} type="cities"
+                />
+              </section>
+              <div className="cities__right-section">
+                {Boolean(places.length) && (
+                  <section className="cities__map map">
+                    <Map
+                      places={placesbyCity}
+                      selectOffer={selectOffer}
+                    />
+                  </section>
+                )}
+              </div>
+            </div> :
+            <MainEmpty />}
         </div>
       </main>
     </div>

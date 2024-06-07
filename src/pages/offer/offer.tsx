@@ -7,9 +7,10 @@ import ListPlaces from '../../components/main/list-places/list-places';
 import { useAppSelector } from '../../hooks/redux';
 import { AuthorizationStatus } from '../../const';
 import { useEffect } from 'react';
-import { fetchNearbyAction,fetchOfferAction,fetchReviewsAction } from '../../store/api-action';
+import { fetchNearbyAction,fetchOfferAction,fetchReviewsAction,fetchFavorites } from '../../store/api-action';
 import { useAppDispatch } from '../../hooks/redux';
 import Spinner from '../../components/common/spinner/spinner';
+import { toggleFavorite } from '../../store/api-action';
 
 
 function Offer(): JSX.Element {
@@ -30,8 +31,9 @@ function Offer(): JSX.Element {
 
   useEffect(() => {
     dispatch(fetchOfferAction(ID));
-    dispatch(fetchReviewsAction(ID));
     dispatch(fetchNearbyAction(ID));
+    dispatch((fetchReviewsAction(ID)));
+    dispatch((fetchFavorites()));
   }, [dispatch, ID]);
 
 
@@ -42,6 +44,14 @@ function Offer(): JSX.Element {
   if (!place) {
     return <Navigate to="/"/>;
   }
+
+
+  const handleFavoriteToggle = () => {
+    if (ID) {
+      const status = place.isFavorite ? 0 : 1;
+      dispatch(toggleFavorite({ offerId: ID, status }));
+    }
+  };
 
   const limit = nearby.slice(0, 3);
 
@@ -90,11 +100,17 @@ function Offer(): JSX.Element {
                 </div>}
               <div className="offer__name-wrapper">
                 <h1 className="offer__name">{place.title}</h1>
-                <button className={`offer__bookmark-button button ${place.isFavorite ? 'offer__bookmark-button--active' : ''}`} type="button">
-                  <svg className="offer__bookmark-icon" width={31} height={33}>
+                <button className= {
+                  place.isFavorite ? 'place-card__bookmark-button place-card__bookmark-button--active button' :
+                    'place-card__bookmark-button button'
+                }
+                type="button"
+                onClick={handleFavoriteToggle}
+                >
+                  <svg className="place-card__bookmark-icon" width="18" height="19">
                     <use xlinkHref="#icon-bookmark"></use>
                   </svg>
-                  <span className="visually-hidden">To bookmarks</span>
+                  <span className="visually-hidden">{place.isFavorite ? 'In bookmarks' : 'To bookmarks'}</span>
                 </button>
               </div>
               <div className="offer__rating rating">

@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import { OfferProps } from '../../../types/list-offers';
-
+import { SelectOffer } from '../../favorite/favorite-place-card/favorite-place-card';
+import { useAppDispatch } from '../../../hooks/redux';
+import { toggleFavorite } from '../../../store/api-action';
 
 type CardProps = {
   place: OfferProps;
@@ -9,8 +11,21 @@ type CardProps = {
   handleCardMouseLeave?: () => void;
 };
 
-function PlaceCard({place,handleCardMouseLeave: handleMouseLeave, handleCardMouseEnter: handleMouseEnter, type}:CardProps):JSX.Element {
 
+function PlaceCard({place,handleCardMouseLeave: handleMouseLeave, handleCardMouseEnter: handleMouseEnter, type}:CardProps):JSX.Element {
+  const [offerCardClickHandle] = SelectOffer(place.id);
+
+
+  const dispatch = useAppDispatch();
+
+
+  const handleFavoriteToggle = () => {
+
+    const status = place.isFavorite ? 0 : 1;
+    dispatch(toggleFavorite({ offerId: place.id, status }));
+
+
+  };
 
   return(
     <article
@@ -18,6 +33,11 @@ function PlaceCard({place,handleCardMouseLeave: handleMouseLeave, handleCardMous
 
       onMouseEnter={() => handleMouseEnter?.(place.id)}
       onMouseLeave={() => handleMouseLeave?.()}
+
+      onClick={(evt) => {
+        evt.preventDefault();
+        offerCardClickHandle();
+      }}
 
       className={`${type}__card place-card`}
     >
@@ -44,6 +64,7 @@ function PlaceCard({place,handleCardMouseLeave: handleMouseLeave, handleCardMous
               'place-card__bookmark-button button'
           }
           type="button"
+          onClick={handleFavoriteToggle}
           >
             <svg className="place-card__bookmark-icon" width="18" height="19">
               <use xlinkHref="#icon-bookmark"></use>

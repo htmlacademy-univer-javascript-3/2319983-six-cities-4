@@ -1,4 +1,4 @@
-import { createAction } from '@reduxjs/toolkit';
+import { createAction, } from '@reduxjs/toolkit';
 import { AppRoute, NameCity, NameSort } from '../const';
 import { AuthorizationStatus } from '../const';
 import { Comments } from '../types/comment';
@@ -32,4 +32,11 @@ export const setNearby = createAction<OffersProps>('setNearby');
 
 export const setUserInfo = createAction<UserProps | null>('setUserInfo');
 
+export const getFavorites = createAction<OffersProps>('getFavorites');
+export const getIsFavoritesLoading = createAction<boolean>('getIsFavoritesLoading');
+export const getIsFavoriteStatusSubmitting = createAction<boolean>('getIsFavoriteStatusSubmitting');
+
+export const updateSelect = createAction('updateSelect', (value) => ({payload: value,}));
+
+export const redirectRoute = createAction('redictRoute', (value) => ({payload: value,}));
 
