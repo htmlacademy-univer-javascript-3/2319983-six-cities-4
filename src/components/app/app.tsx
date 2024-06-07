@@ -5,7 +5,6 @@ import Favorites from '../../pages/favorites/favorites';
 import Offer from '../../pages/offer/offer';
 import NotFound from '../../pages/not-found/not-found';
 import PrivateRoute from '../common/private-route/private-route';
-import { comments } from '../../mocks/comments';
 import { useAppSelector } from '../../hooks/redux';
 import Spinner from '../common/spinner/spinner';
 import HistoryRouter from './history-router';
@@ -61,7 +60,7 @@ function App(): JSX.Element {
         />
         <Route
           path= {AppRoute.Offer}
-          element = {<Offer review={comments}/>}
+          element = {<Offer/>}
         />
         <Route
           path="*"

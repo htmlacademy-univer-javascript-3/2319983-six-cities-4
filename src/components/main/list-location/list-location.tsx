@@ -3,7 +3,7 @@ import { AppRoute, NameCity } from '../../../const';
 import { useAppSelector } from '../../../hooks/redux';
 import cn from 'classnames';
 import { useDispatch } from 'react-redux';
-import { changeCity as changeCity } from '../../../store/action';
+import { changeCity } from '../../../store/action';
 function ListLocation():JSX.Element {
   const activeCity = useAppSelector((store) =>store.selectCity);
   const dispatch = useDispatch();

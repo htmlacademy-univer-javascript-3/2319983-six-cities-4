@@ -3,9 +3,10 @@ import ReviewItem from '../review-item/review-item';
 
 type ReviewListProps = {
     list: Comments;
+    children?:React.ReactNode;
 }
 
-function ReviewList({list}: ReviewListProps) {
+function ReviewList({list, children}: ReviewListProps) {
   return (
 
     <section className="offer__reviews reviews">
@@ -18,8 +19,7 @@ function ReviewList({list}: ReviewListProps) {
         }
 
       </ul>
-
-
+      {children}
     </section>
 
   );
